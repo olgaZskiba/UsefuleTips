@@ -1,0 +1,14 @@
+ Map<String, Runnable> actionList = new HashMap<>();
+
+        actionList.put(COMMAND_MAIN_PAGE, () -> doGetMainPage(req, resp));
+        actionList.put(COMMAND_CHECKBOX, () -> doGetCheckbox(req, resp));
+        actionList.put(COMMAND_SLIDER, () -> doGetSlider(req, resp));
+        actionList.put(COMMAND_BY_COUNTRY, () -> doGetProductsByCountry(req, resp));
+        actionList.put(COMMAND_BY_CATEGORY, () -> doGetProductsByCategory(req, resp));
+        actionList.put(COMMAND_ADD_TO_BASKET, () -> doGetAddProductToBasket(req, resp));
+
+        for (Map.Entry<String, Runnable> map : actionList.entrySet()) {
+            if (map.getKey().equals(action)) {
+                actionList.get(action).run();
+            }
+        }
